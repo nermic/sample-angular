@@ -13,7 +13,7 @@ interface Softkey {
   styleUrls: ['./softkey.component.css']
 })
 export class SoftkeyComponent {
-  private inputSoftKey: Softkey = { left: '', center: 'Insert', right: '' };
+  private inputSoftKey: Softkey = { left: 'Tariff Plan', center: 'Select', right: 'Help' };
   private toDoSoftKey: Softkey = { left: '', center: 'Toggle', right: 'Delete' };
   public softkey: Softkey = this.inputSoftKey;
 
