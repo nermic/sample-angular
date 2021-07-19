@@ -1,3 +1,4 @@
+import { HomeService } from './shared/components/home/home.service';
 import { Component, HostListener, OnInit } from '@angular/core';
 import { TodoService } from './shared/components/todo/todo.service';
 import { NavigationService } from './core/services/navigation.service';
@@ -8,7 +9,7 @@ import { NavigationService } from './core/services/navigation.service';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent implements OnInit {
-  constructor(private todoService: TodoService, private navigationService: NavigationService) { }
+  constructor(private homeService: HomeService, private todoService: TodoService, private navigationService: NavigationService) { }
 
   ngOnInit() {
     this.navigationService.init();
@@ -21,7 +22,7 @@ export class AppComponent implements OnInit {
       this.todoService.add({ name: currentItem.value, completed: false });
       currentItem.value = '';
     } else {
-      this.todoService.toggleComplete(currentIndex - 1);
+      this.homeService.toggleComplete(currentIndex - 1);
     }
   }
 
@@ -35,12 +36,23 @@ export class AppComponent implements OnInit {
     this.navigationService.Up();
   }
 
-  @HostListener('document:keydown.softright')
+  // @HostListener('document:keydown.softright')
+  @HostListener('document:keydown.arrowright')
   onSoftRight() {
     const [currentItem, currentIndex] = this.navigationService.getCurrentItem();
-    if (currentItem.nodeName === 'SPAN') {
-      this.todoService.remove(currentIndex - 1);
-      this.navigationService.Up();
+    if (currentItem.nodeName === 'IMG') {
+      this.homeService.softRight(currentIndex - 1);
+      // this.navigationService.Up();
+    }
+  }
+
+  // @HostListener('document:keydown.softleft')
+  @HostListener('document:keydown.arrowleft')
+  onSoftLeft() {
+    const [currentItem, currentIndex] = this.navigationService.getCurrentItem();
+    if (currentItem.nodeName === 'IMG') {
+      this.homeService.softLeft(currentIndex - 1);
+      // this.navigationService.Up();
     }
   }
 }

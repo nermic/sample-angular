@@ -1,0 +1,31 @@
+.grid-container {
+    display: grid;
+    grid-template-columns: auto auto;
+    /* background-color: #2196F3; */
+    grid-gap: 0px;
+    /* padding: 10px; */
+  }
+  
+  .grid-item {   
+    margin: 5px;
+    padding: 3px;
+    color: white;
+    font-weight: 700;
+    font-size: 10px;
+    text-align: center;
+  }
+
+  img{
+    border-radius: 10px;
+    width: 56px;
+    height: 56px;
+    cursor: pointer;
+}
+/* .grid-item:focus[nav-selected="true"] {
+  background-image: linear-gradient(255deg, #9B27AF, #9B27AF);
+ 
+} */
+
+.grid-img:focus[nav-selected="true"] {
+  background-color: whitesmoke;
+}

@@ -1,8 +1,12 @@
+// import { SoftkeyComponent } from './../../shared/components/softkey/softkey.component';
 import { Injectable } from '@angular/core';
 import { Subject } from 'rxjs';
 
 @Injectable({ providedIn: 'root' })
 export class NavigationService {
+
+
+  // constructor(private softKey: SoftkeyComponent) { }  
   public currentItem: Subject<Element> = new Subject<Element>();
 
   public init() {
@@ -42,12 +46,20 @@ export class NavigationService {
       // tslint:disable-next-line: no-unused-expression
       selectThisElement && this.currentItem.next(element);
 
-      if (element.nodeName === 'INPUT') {
+      if (element.nodeName === 'IMG') {
         selectThisElement
           // tslint:disable-next-line: no-unused-expression
           ? 'focus' in element && element.focus()
           : 'blur' in element && element.blur();
+          
+          if (index == 0) {
+            // this.softKey.softkey.left = '';
+            console.log('On AvvataaFree');
+          }
       }
+
+ 
+
     });
   }
 
